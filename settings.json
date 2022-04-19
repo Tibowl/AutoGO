@@ -1,5 +1,8 @@
 {
     "templates": [
-        "templates/kazuha-er-em.json"
+        "templates/kazuha-er-em.json",
+        "templates/hutao-ca-homa-sronly.json",
+        "templates/hutao-ca-dm-sronly.json",
+        "templates/hutao-ca-dbane-sronly.json"
     ]
 }

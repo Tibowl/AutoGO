@@ -27,6 +27,7 @@ async function run() {
     template.characters = template.characters.filter(x => x.key == char)
 
     // Filter out other weapons
+    const weapons = template.weapons.map(x => x.key)
     template.weapons = template.weapons.filter(x => x.location == char)
 
     const weapon = template.weapons[0]?.key
@@ -38,7 +39,7 @@ async function run() {
 
     template.characters.forEach(x => {
         // Cleanup conditional settings
-        x.conditional = Object.fromEntries(Object.entries(x.conditional).filter(x => x[0] == weapon))
+        x.conditional = Object.fromEntries(Object.entries(x.conditional).filter(x => x[0] == weapon || !weapons.includes(x[0])))
 
         // Force certain settings
         x.useExcludedArts = true

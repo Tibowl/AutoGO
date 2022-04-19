@@ -19,7 +19,7 @@ async function run() {
         for (const f of await readdir("./good/", { withFileTypes: true }))
             if (f.isFile() && f.name.endsWith(".json")) {
                 const { name: user } = f
-                const good = await prepareUser(template, user)
+                const good = await prepareUser(template, user, templateName)
 
                 const page = await browser.newPage()
                 console.log(`Replacing database for ${templateName}/${user}`)
