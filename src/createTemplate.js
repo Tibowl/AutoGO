@@ -7,7 +7,7 @@ async function run() {
 
     if (templateName == undefined) {
         console.log(`Usage: node src/createTemplate <char> <templateName> [GOOD filepath OR 'clipboard']`)
-        console.log(`Example: node src/createTemplate KaedeharaKazuha kazuha-em`)
+        console.log(`Example: node src/createTemplate KaedeharaKazuha kazuha-er-em`)
         return;
     }
 
@@ -46,6 +46,9 @@ async function run() {
         x.builds = []
         x.buildDate = 0
         x.maxBuildsToShow = 1
+    })
+    template.weapons.forEach(x => {
+        x.lock = true
     })
 
 

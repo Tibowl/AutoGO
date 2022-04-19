@@ -13,9 +13,7 @@
         "ascension": 6,
         "hitMode": "avgHit",
         "reactionMode": "",
-        "conditional": {
-          "FreedomSworn": {}
-        },
+        "conditional": {},
         "bonusStats": {},
         "enemyOverride": {},
         "talent": {
@@ -56,7 +54,7 @@
           "builds": [],
           "buildDate": 0,
           "maxBuildsToShow": 1,
-          "plotBase": "anemo_dmg_",
+          "plotBase": "enerRech_",
           "compareBuild": true,
           "levelLow": 0,
           "levelHigh": 20
@@ -77,12 +75,12 @@
     ],
     "weapons": [
       {
-        "key": "FreedomSworn",
+        "key": "IronSting",
         "level": 90,
         "ascension": 6,
         "refinement": 1,
         "location": "KaedeharaKazuha",
-        "lock": false
+        "lock": true
       }
     ]
   }
