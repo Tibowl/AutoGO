@@ -42,11 +42,11 @@ async function run() {
         x.conditional = Object.fromEntries(Object.entries(x.conditional).filter(x => x[0] == weapon || !weapons.includes(x[0])))
 
         // Force certain settings
-        x.useExcludedArts = true
-        x.useEquippedArts = true
-        x.builds = []
-        x.buildDate = 0
-        x.maxBuildsToShow = 1
+        x.buildSettings.useExcludedArts = false
+        x.buildSettings.useEquippedArts = false
+        x.buildSettings.builds = []
+        x.buildSettings.buildDate = 0
+        x.buildSettings.maxBuildsToShow = 1
     })
     template.weapons.forEach(x => {
         x.lock = true

@@ -49,8 +49,8 @@
             "eleMas"
           ],
           "mainStatAssumptionLevel": 20,
-          "useExcludedArts": true,
-          "useEquippedArts": true,
+          "useExcludedArts": false,
+          "useEquippedArts": false,
           "builds": [],
           "buildDate": 0,
           "maxBuildsToShow": 1,
@@ -65,12 +65,7 @@
           ""
         ],
         "compareData": false,
-        "favorite": false,
-        "useExcludedArts": true,
-        "useEquippedArts": true,
-        "builds": [],
-        "buildDate": 0,
-        "maxBuildsToShow": 1
+        "favorite": false
       }
     ],
     "weapons": [

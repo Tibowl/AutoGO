@@ -87,12 +87,7 @@
           ""
         ],
         "compareData": false,
-        "favorite": false,
-        "useExcludedArts": true,
-        "useEquippedArts": true,
-        "builds": [],
-        "buildDate": 0,
-        "maxBuildsToShow": 1
+        "favorite": false
       }
     ],
     "weapons": [
