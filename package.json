@@ -1,0 +1,16 @@
+{
+  "name": "autogo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src",
+    "create-template": "node src/createTemplate"
+  },
+  "author": "Tibowl",
+  "license": "ISC",
+  "dependencies": {
+    "clipboardy": "2",
+    "puppeteer": "^13.5.2"
+  }
+}

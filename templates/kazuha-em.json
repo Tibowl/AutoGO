@@ -1,0 +1,89 @@
+{
+  "templateName": "kazuha-em",
+  "char": "KaedeharaKazuha",
+  "template": {
+    "format": "GOOD",
+    "dbVersion": 15,
+    "source": "Genshin Optimizer",
+    "version": 1,
+    "characters": [
+      {
+        "key": "KaedeharaKazuha",
+        "level": 90,
+        "ascension": 6,
+        "hitMode": "avgHit",
+        "reactionMode": "",
+        "conditional": {
+          "FreedomSworn": {}
+        },
+        "bonusStats": {},
+        "enemyOverride": {},
+        "talent": {
+          "auto": 9,
+          "skill": 9,
+          "burst": 9
+        },
+        "infusionAura": "",
+        "constellation": 0,
+        "buildSettings": {
+          "setFilters": [
+            {
+              "key": "ViridescentVenerer",
+              "num": 4
+            },
+            {
+              "key": "",
+              "num": 0
+            },
+            {
+              "key": "",
+              "num": 0
+            }
+          ],
+          "statFilters": {},
+          "mainStatKeys": {
+            "sands": [],
+            "goblet": [],
+            "circlet": []
+          },
+          "optimizationTarget": [
+            "basic",
+            "eleMas"
+          ],
+          "mainStatAssumptionLevel": 20,
+          "useExcludedArts": true,
+          "useEquippedArts": true,
+          "builds": [],
+          "buildDate": 0,
+          "maxBuildsToShow": 1,
+          "plotBase": "anemo_dmg_",
+          "compareBuild": true,
+          "levelLow": 0,
+          "levelHigh": 20
+        },
+        "team": [
+          "",
+          "",
+          ""
+        ],
+        "compareData": false,
+        "favorite": false,
+        "useExcludedArts": true,
+        "useEquippedArts": true,
+        "builds": [],
+        "buildDate": 0,
+        "maxBuildsToShow": 1
+      }
+    ],
+    "weapons": [
+      {
+        "key": "FreedomSworn",
+        "level": 90,
+        "ascension": 6,
+        "refinement": 1,
+        "location": "KaedeharaKazuha",
+        "lock": false
+      }
+    ]
+  }
+}
