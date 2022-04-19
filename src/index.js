@@ -7,18 +7,31 @@ async function run() {
     const browser = await puppeteer.launch({ headless: false })
     await mkdir("output", { recursive: true })
 
+
+    console.log()
+    console.log(`Running builds for ${settings.onlyNew ? "only new users" : "all users"} for ${settings.templates.length} template(s)`)
+    console.log("=".repeat(64))
+
     for (const templateFile of settings.templates) {
         const { templateName, template, char } = JSON.parse((await readFile(templateFile)).toString())
-        const url = `https://frzyc.github.io/genshin-optimizer/#/character/${char}`
-        const output = []
 
         console.log()
         console.log(`Starting template ${templateName}`)
-        console.log()
+
+        const url = `https://frzyc.github.io/genshin-optimizer/#/character/${char}`
+        const outputFile = `output/${templateName}.json`
+        const output = await loadOutput(outputFile)
+
+        if (output.length > 0)
+            console.log(`Loaded ${output.length} from output`)
+        console.log("=".repeat(64))
 
         for (const f of await readdir("./good/", { withFileTypes: true }))
             if (f.isFile() && f.name.endsWith(".json")) {
                 const { name: user } = f
+                if (settings.onlyNew && output.some(x => x.user == user))
+                    continue
+
                 const good = await prepareUser(template, user, templateName)
 
                 const page = await browser.newPage()
@@ -45,9 +58,12 @@ async function run() {
                 const area = await page.$("textarea")
                 const text = await (await area.getProperty("value")).jsonValue()
                 console.log(text)
-                
-                output.push({ user, stats: JSON.parse(text) })
-                await writeFile(`output/${templateName}.json`, JSON.stringify(output))
+
+                output.push({
+                    user,
+                    stats: JSON.parse(text)
+                })
+                await writeFile(outputFile, JSON.stringify(output))
 
                 await page.close()
             }
@@ -55,6 +71,38 @@ async function run() {
     await browser.close()
 }
 
+/**
+ * @typedef Output
+ * @property {string} name
+ * @property {number[][]} stats
+ */
+
+/**
+ * 
+ * @param {string} file Path of file to load
+ * @returns {Promise<Output[]>} Currently loaded output
+ */
+async function loadOutput(file) {
+    if (!settings.onlyNew)
+        return []
+
+    let contents
+    try {
+        contents = await readFile(file)
+    } catch (error) {
+        return []
+    }
+
+    return JSON.parse(contents.toString())
+}
+
+/**
+ * Prepare user data, filling in a template
+ * @param {GOOD} template Template data to fill in
+ * @param {string} user Name of user
+ * @param {string} templateName Name of template
+ * @returns {Promise<GOOD>} Filled in GOOD data
+ */
 async function prepareUser(template, user, templateName) {
     console.log(`Preparing data for ${templateName}/${user}`)
     const userGood = JSON.parse((await readFile(join("good", user))).toString())
@@ -76,6 +124,12 @@ async function prepareUser(template, user, templateName) {
     return good
 }
 
+/**
+ * Click a button element with a certain text
+ * @param {puppeteer.Page} page The current tab
+ * @param {string} targetText Text of the button to press
+ * @returns 
+ */
 async function clickButton(page, targetText) {
     const buttons = await page.$$("button")
 
@@ -90,6 +144,12 @@ async function clickButton(page, targetText) {
 }
 
 
+/**
+ * Busily wait for build generation to finish, prints progress ever ~3 seconds
+ * @param {puppeteer.Page} page The current tab
+ * @param {string} user Name of the current user
+ * @returns when build generation is done
+ */
 async function busyWait(page, user) {
     while (true) {
         await page.waitForTimeout(3000)

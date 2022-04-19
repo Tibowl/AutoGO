@@ -4,5 +4,6 @@
         "templates/hutao-ca-homa-sronly.json",
         "templates/hutao-ca-dm-sronly.json",
         "templates/hutao-ca-dbane-sronly.json"
-    ]
+    ],
+    "onlyNew": true
 }
