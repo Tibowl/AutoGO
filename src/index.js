@@ -49,18 +49,26 @@ async function run() {
                 await page.waitForTimeout(1000)
                 await clickButton(page, "Generate")
 
-                await busyWait(page, user)
+                if (await busyWait(page, user)) {
+                    console.log(`Exporting data of ${templateName}/${user}`)
+                    await page.waitForTimeout(500)
+                    const area = await page.$("textarea")
+                    const text = await (await area.getProperty("value")).jsonValue()
+                    console.log(text)
 
-                console.log(`Exporting data of ${templateName}/${user}`)
-                await page.waitForTimeout(500)
-                const area = await page.$("textarea")
-                const text = await (await area.getProperty("value")).jsonValue()
-                console.log(text)
+                    output.push({
+                        user,
+                        stats: JSON.parse(text)
+                    })
+                } else {
+                    console.log(`No sets could be generated for ${templateName}/${user}`)
 
-                output.push({
-                    user,
-                    stats: JSON.parse(text)
-                })
+                    output.push({
+                        user,
+                        stats: []
+                    })
+                }
+
                 await writeFile(outputFile, JSON.stringify(output))
 
                 await page.close()
@@ -76,7 +84,7 @@ async function run() {
  */
 
 /**
- * 
+ *
  * @param {string} file Path of file to load
  * @returns {Promise<Output[]>} Currently loaded output
  */
@@ -126,7 +134,7 @@ async function prepareUser(template, user, templateName) {
  * Click a button element with a certain text
  * @param {puppeteer.Page} page The current tab
  * @param {string} targetText Text of the button to press
- * @returns 
+ * @returns
  */
 async function clickButton(page, targetText) {
     const buttons = await page.$$("button")
@@ -146,7 +154,7 @@ async function clickButton(page, targetText) {
  * Busily wait for build generation to finish, prints progress ever ~3 seconds
  * @param {puppeteer.Page} page The current tab
  * @param {string} user Name of the current user
- * @returns when build generation is done
+ * @returns {Promise<boolean>} true when build generation is successful, false if not
  */
 async function busyWait(page, user) {
     while (true) {
@@ -155,7 +163,9 @@ async function busyWait(page, user) {
         const text = await (await message.getProperty("innerText")).jsonValue()
         console.log(`${user}: ${text.replace(/\n+/g, " / ")}`)
 
-        if (text.startsWith("Generated")) return
+        if (text.startsWith("Generated")) return true
+        if (text.includes("It looks like you haven't added any artifacts to GO yet!")) return false
+        if (text.startsWith("Current configuration will not generate any builds for")) return false
     }
 }
 
