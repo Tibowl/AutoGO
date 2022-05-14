@@ -18,7 +18,7 @@ async function run() {
         console.log()
         console.log(`Starting template ${templateName}`)
 
-        const url = `https://frzyc.github.io/genshin-optimizer/#/character/${char}/build`
+        const url = `https://frzyc.github.io/genshin-optimizer/#/character/${char}/optimize`
         const outputFile = `output/${templateName}.json`
         const output = await loadOutput(outputFile)
 
@@ -47,7 +47,7 @@ async function run() {
                 console.log(`Starting build generation for ${templateName}/${user}`)
                 await page.goto(url)
                 await page.waitForTimeout(1000)
-                await clickButton(page, "Generate")
+                await clickButton(page, "Generate Builds")
 
                 if (await busyWait(page, user)) {
                     console.log(`Exporting data of ${templateName}/${user}`)
