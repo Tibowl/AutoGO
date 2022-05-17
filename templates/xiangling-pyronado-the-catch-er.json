@@ -1,0 +1,105 @@
+{
+  "templateName": "xiangling-pyronado-the-catch-er",
+  "char": "Xiangling",
+  "template": {
+    "format": "GOOD",
+    "dbVersion": 15,
+    "source": "Genshin Optimizer",
+    "version": 1,
+    "characters": [
+      {
+        "key": "Xiangling",
+        "level": 90,
+        "ascension": 6,
+        "hitMode": "avgHit",
+        "reactionMode": "pyro_vaporize",
+        "conditional": {
+          "Xiangling": {
+            "afterPyronado": "duringPyronado"
+          },
+          "CrimsonWitchOfFlames": {
+            "stack": "1"
+          },
+          "NoblesseOblige": {}
+        },
+        "bonusStats": {
+          "atk": 1000,
+          "atk_": 20,
+          "pyro_enemyRes_": -40
+        },
+        "enemyOverride": {},
+        "talent": {
+          "auto": 10,
+          "skill": 10,
+          "burst": 10
+        },
+        "infusionAura": "",
+        "constellation": 6,
+        "buildSettings": {
+          "setFilters": [
+            {
+              "key": "",
+              "num": 0
+            },
+            {
+              "key": "",
+              "num": 0
+            },
+            {
+              "key": "",
+              "num": 0
+            }
+          ],
+          "statFilters": {},
+          "mainStatKeys": {
+            "sands": [
+              "enerRech_",
+              "atk_",
+              "eleMas"
+            ],
+            "goblet": [
+              "atk_",
+              "pyro_dmg_"
+            ],
+            "circlet": [
+              "critRate_",
+              "critDMG_",
+              "atk_"
+            ]
+          },
+          "optimizationTarget": [
+            "burst",
+            "dmgNado"
+          ],
+          "mainStatAssumptionLevel": 20,
+          "useExcludedArts": false,
+          "useEquippedArts": false,
+          "builds": [],
+          "buildDate": 0,
+          "maxBuildsToShow": 1,
+          "plotBase": "enerRech_",
+          "compareBuild": true,
+          "levelLow": 0,
+          "levelHigh": 20
+        },
+        "team": [
+          "",
+          "",
+          ""
+        ],
+        "compareData": false,
+        "favorite": false
+      }
+    ],
+    "weapons": [
+      {
+        "key": "TheCatch",
+        "level": 90,
+        "ascension": 6,
+        "refinement": 5,
+        "location": "Xiangling",
+        "lock": true
+      }
+    ]
+  }
+}
