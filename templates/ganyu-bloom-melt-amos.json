@@ -1,0 +1,116 @@
+{
+  "templateName": "ganyu-bloom-melt-amos",
+  "char": "Ganyu",
+  "template": {
+    "format": "GOOD",
+    "dbVersion": 15,
+    "source": "Genshin Optimizer",
+    "version": 1,
+    "characters": [
+      {
+        "key": "Ganyu",
+        "level": 90,
+        "ascension": 6,
+        "hitMode": "avgHit",
+        "reactionMode": "cryo_melt",
+        "conditional": {
+          "Ganyu": {
+            "A1": "on"
+          },
+          "ShimenawasReminiscence": {
+            "usedEnergy": "used"
+          },
+          "Lavawalker": {
+            "state": "on"
+          },
+          "HeartOfDepth": {
+            "skill": "cast"
+          },
+          "RetracingBolide": {
+            "state": "on"
+          },
+          "AmosBow": {
+            "StrongWilled": "3"
+          }
+        },
+        "bonusStats": {
+          "atk_": 45,
+          "atk": 1000
+        },
+        "enemyOverride": {},
+        "talent": {
+          "auto": 10,
+          "skill": 10,
+          "burst": 10
+        },
+        "infusionAura": "",
+        "constellation": 0,
+        "buildSettings": {
+          "setFilters": [
+            {
+              "key": "",
+              "num": 0
+            },
+            {
+              "key": "",
+              "num": 0
+            },
+            {
+              "key": "",
+              "num": 0
+            }
+          ],
+          "statFilters": {},
+          "mainStatKeys": {
+            "sands": [
+              "atk_",
+              "eleMas"
+            ],
+            "goblet": [
+              "eleMas",
+              "cryo_dmg_",
+              "atk_"
+            ],
+            "circlet": [
+              "atk_",
+              "critDMG_",
+              "critRate_",
+              "eleMas"
+            ]
+          },
+          "optimizationTarget": [
+            "charged",
+            "frostflakeBloom"
+          ],
+          "mainStatAssumptionLevel": 20,
+          "useExcludedArts": false,
+          "useEquippedArts": false,
+          "builds": [],
+          "buildDate": 0,
+          "maxBuildsToShow": 1,
+          "plotBase": "cryo_dmg_",
+          "compareBuild": true,
+          "levelLow": 0,
+          "levelHigh": 20
+        },
+        "team": [
+          "",
+          "",
+          ""
+        ],
+        "compareData": false,
+        "favorite": false
+      }
+    ],
+    "weapons": [
+      {
+        "key": "AmosBow",
+        "level": 90,
+        "ascension": 6,
+        "refinement": 1,
+        "location": "Ganyu",
+        "lock": true
+      }
+    ]
+  }
+}
