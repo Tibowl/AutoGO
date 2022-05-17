@@ -76,7 +76,7 @@
           "builds": [],
           "buildDate": 0,
           "maxBuildsToShow": 1,
-          "plotBase": "cryo_dmg_",
+          "plotBase": "enerRech_",
           "compareBuild": true,
           "levelLow": 0,
           "levelHigh": 20
