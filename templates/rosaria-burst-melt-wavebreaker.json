@@ -1,0 +1,118 @@
+{
+  "templateName": "rosaria-burst-melt-wavebreaker",
+  "char": "Rosaria",
+  "template": {
+    "format": "GOOD",
+    "dbVersion": 15,
+    "source": "Genshin Optimizer",
+    "version": 1,
+    "characters": [
+      {
+        "key": "Rosaria",
+        "level": 90,
+        "ascension": 6,
+        "hitMode": "avgHit",
+        "reactionMode": "cryo_melt",
+        "conditional": {
+          "Rosaria": {
+            "DilucC6": "on"
+          },
+          "NoblesseOblige": {},
+          "WavebreakersFin": {
+            "WatatsumiWavewalker": "280"
+          },
+          "EngulfingLightning": {
+            "TimelessDream": "on"
+          },
+          "CalamityQueller": {
+            "stack": "6"
+          },
+          "resonance": {},
+          "BlizzardStrayer": {},
+          "DragonsBane": {
+            "BaneOfFlameAndWater": "on"
+          }
+        },
+        "bonusStats": {
+          "atk": 1000,
+          "atk_": 45,
+          "cryo_enemyRes_": -13,
+          "cryo_dmg_": 15,
+          "skill_dmg_": 15,
+          "burst_dmg_": 15
+        },
+        "enemyOverride": {
+          "physical_enemyRes_": -40
+        },
+        "talent": {
+          "auto": 10,
+          "skill": 10,
+          "burst": 10
+        },
+        "infusionAura": "",
+        "constellation": 6,
+        "buildSettings": {
+          "setFilters": [
+            {
+              "key": "",
+              "num": 0
+            },
+            {
+              "key": "",
+              "num": 0
+            },
+            {
+              "key": "",
+              "num": 0
+            }
+          ],
+          "statFilters": {},
+          "mainStatKeys": {
+            "sands": [
+              "eleMas","atk_"
+            ],
+            "goblet": [
+              "eleMas",
+              "cryo_dmg_"
+            ],
+            "circlet": [
+              "critRate_",
+              "critDMG_"
+            ]
+          },
+          "optimizationTarget": [
+            "burst",
+            "dotDmg"
+          ],
+          "mainStatAssumptionLevel": 0,
+          "useExcludedArts": false,
+          "useEquippedArts": false,
+          "builds": [],
+          "buildDate": 0,
+          "maxBuildsToShow": 1,
+          "plotBase": "enerRech_",
+          "compareBuild": true,
+          "levelLow": 0,
+          "levelHigh": 20
+        },
+        "team": [
+          "",
+          "",
+          ""
+        ],
+        "compareData": false,
+        "favorite": true
+      }
+    ],
+    "weapons": [
+      {
+        "key": "WavebreakersFin",
+        "level": 90,
+        "ascension": 6,
+        "refinement": 5,
+        "location": "Rosaria",
+        "lock": true
+      }
+    ]
+  }
+}
