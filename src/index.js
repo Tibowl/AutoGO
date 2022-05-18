@@ -12,7 +12,7 @@ async function run() {
     console.log(`Running builds for ${settings.onlyNew ? "only new users" : "all users"} for ${settings.templates.length} template(s)`)
     console.log("=".repeat(64))
 
-    for (const templateFile of settings.templates) {
+    for (const templateFile of settings.runFromFolder === true ? (await readdir("./templates")).map(x => `./templates/${x}`) : settings.templates) {
         const { templateName, template, char } = JSON.parse((await readFile(templateFile)).toString())
 
         console.log()
