@@ -77,7 +77,7 @@
           },
           "optimizationTarget": [
             "charged",
-            "sSlash"
+            "akSlash"
           ],
           "mainStatAssumptionLevel": 0,
           "useExcludedArts": false,
@@ -85,7 +85,7 @@
           "builds": [],
           "buildDate": 0,
           "maxBuildsToShow": 1,
-          "plotBase": "",
+          "plotBase": "geo_dmg_",
           "compareBuild": true,
           "levelLow": 0,
           "levelHigh": 20
