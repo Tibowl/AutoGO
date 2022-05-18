@@ -1,0 +1,113 @@
+{
+  "templateName": "itto-ca-redhorn",
+  "char": "AratakiItto",
+  "template": {
+    "format": "GOOD",
+    "dbVersion": 15,
+    "source": "Genshin Optimizer",
+    "version": 1,
+    "characters": [
+      {
+        "key": "AratakiItto",
+        "level": 90,
+        "ascension": 6,
+        "hitMode": "avgHit",
+        "reactionMode": "",
+        "conditional": {
+          "AratakiItto": {
+            "burst": "on",
+            "passive1": "3"
+          },
+          "HuskOfOpulentDreams": {
+            "stack": "4"
+          },
+          "resonance": {
+            "EnduringRock": "on"
+          },
+          "HeartOfDepth": {
+            "skill": "cast"
+          }
+        },
+        "bonusStats": {
+          "atk_": 20,
+          "def": 438,
+          "critDMG_": 40,
+          "def_": 25,
+          "all_dmg_": 15,
+          "geo_enemyRes_": -40,
+          "geo_dmg_": 15
+        },
+        "enemyOverride": {},
+        "talent": {
+          "auto": 10,
+          "skill": 10,
+          "burst": 10
+        },
+        "infusionAura": "",
+        "constellation": 0,
+        "buildSettings": {
+          "setFilters": [
+            {
+              "key": "",
+              "num": 0
+            },
+            {
+              "key": "",
+              "num": 0
+            },
+            {
+              "key": "",
+              "num": 0
+            }
+          ],
+          "statFilters": {},
+          "mainStatKeys": {
+            "sands": [
+              "def_",
+              "atk_"
+            ],
+            "goblet": [
+              "geo_dmg_"
+            ],
+            "circlet": [
+              "critRate_",
+              "critDMG_",
+              "def_"
+            ]
+          },
+          "optimizationTarget": [
+            "charged",
+            "sSlash"
+          ],
+          "mainStatAssumptionLevel": 0,
+          "useExcludedArts": false,
+          "useEquippedArts": false,
+          "builds": [],
+          "buildDate": 0,
+          "maxBuildsToShow": 1,
+          "plotBase": "",
+          "compareBuild": true,
+          "levelLow": 0,
+          "levelHigh": 20
+        },
+        "team": [
+          "",
+          "",
+          ""
+        ],
+        "compareData": false,
+        "favorite": true
+      }
+    ],
+    "weapons": [
+      {
+        "key": "RedhornStonethresher",
+        "level": 90,
+        "ascension": 6,
+        "refinement": 1,
+        "location": "AratakiItto",
+        "lock": true
+      }
+    ]
+  }
+}
