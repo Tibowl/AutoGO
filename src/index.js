@@ -158,7 +158,7 @@ async function clickButton(page, targetText) {
  */
 async function busyWait(page, user) {
     while (true) {
-        await page.waitForTimeout(3000)
+        await page.waitForTimeout(1000)
         const message = await page.$(".MuiAlert-message")
         const text = await (await message.getProperty("innerText")).jsonValue()
         console.log(`${user}: ${text.replace(/\n+/g, " / ")}`)

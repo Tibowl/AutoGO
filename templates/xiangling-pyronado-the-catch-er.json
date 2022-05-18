@@ -24,7 +24,7 @@
         },
         "bonusStats": {
           "atk": 1000,
-          "atk_": 20,
+          "atk_": 45,
           "pyro_enemyRes_": -40
         },
         "enemyOverride": {},
