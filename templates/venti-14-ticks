@@ -1,0 +1,102 @@
+{
+  "templateName": "venti-14-ticks",
+  "char": "Venti",
+  "template": {
+    "format": "GOOD",
+    "dbVersion": 15,
+    "source": "Genshin Optimizer",
+    "version": 1,
+    "characters": [
+      {
+        "key": "Venti",
+        "level": 90,
+        "ascension": 6,
+        "hitMode": "avgHit",
+        "reactionMode": "",
+        "conditional": {
+          "Venti": {
+            "burstAbsorption": "cryo"
+          },
+          "ViridescentVenerer": {
+            "swirlcryo": "cryo"
+          }
+        },
+        "bonusStats": {},
+        "enemyOverride": {},
+        "talent": {
+          "auto": 9,
+          "skill": 9,
+          "burst": 9
+        },
+        "infusionAura": "",
+        "constellation": 0,
+        "buildSettings": {
+          "setFilters": [
+            {
+              "key": "ViridescentVenerer",
+              "num": 4
+            },
+            {
+              "key": "",
+              "num": 0
+            },
+            {
+              "key": "",
+              "num": 0
+            }
+          ],
+          "statFilters": {},
+          "mainStatKeys": {
+            "sands": [
+              "eleMas",
+              "atk_",
+              "enerRech_"
+            ],
+            "goblet": [
+              "anemo_dmg_",
+              "eleMas",
+              "atk_"
+            ],
+            "circlet": [
+              "atk_",
+              "eleMas",
+              "critRate_",
+              "critDMG_"
+            ]
+          },
+          "optimizationTarget": [
+            "burst",
+            "full14"
+          ],
+          "mainStatAssumptionLevel": 0,
+          "useExcludedArts": false,
+          "useEquippedArts": false,
+          "builds": [],
+          "buildDate": 0,
+          "maxBuildsToShow": 1,
+          "plotBase": "enerRech_",
+          "compareBuild": true,
+          "levelLow": 0,
+          "levelHigh": 20
+        },
+        "team": [
+          "",
+          "",
+          ""
+        ],
+        "compareData": false,
+        "favorite": false
+      }
+    ],
+    "weapons": [
+      {
+        "key": "TheStringless",
+        "level": 90,
+        "ascension": 6,
+        "refinement": 3,
+        "location": "Venti",
+        "lock": true
+      }
+    ]
+  }
+}
