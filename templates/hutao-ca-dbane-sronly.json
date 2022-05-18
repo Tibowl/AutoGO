@@ -55,6 +55,7 @@
           "statFilters": {},
           "mainStatKeys": {
             "sands": [
+              "atk_",
               "hp_",
               "eleMas"
             ],
