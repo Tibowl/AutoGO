@@ -1,4 +1,4 @@
-const { readFile, writeFile, readdir } = require("fs/promises")
+const { readFile, writeFile, readdir, rm, rename } = require("fs/promises")
 
 async function run() {
     const [_p, _e, user] = process.argv
@@ -18,6 +18,13 @@ async function run() {
             await writeFile(file, JSON.stringify(stats.filter(x => x.user != user && x.user != (user + ".json"))))
         }
     }
+
+    try {
+        await rename(`./good/${user}`, `./good-old/${user}`)
+    } catch (error) { }
+    try {
+        await rename(`./good/${user}.json`, `./good-old/${user}.json`)
+    } catch (error) { }
 
     console.log(`Cleared user data`)
 }

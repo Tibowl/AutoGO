@@ -4,12 +4,15 @@ const { join } = require("path")
 const settings = require("../settings.json")
 
 async function run() {
+    const start = Date.now()
     const browser = await puppeteer.launch({ headless: false })
     await mkdir("output", { recursive: true })
 
     const templates = [
         ...settings.templates,
-        ...(settings.runFromFolder === true ? (await readdir("./templates")).map(x => `./templates/${x}`) : [])
+        ...(settings.runFromFolder === true ? (await readdir("./templates")).map(x => `./templates/${x}`).filter(x => !x.includes("ganyu") && !x.includes("hutao")) : []),
+        ...(settings.runFromFolder === true ? (await readdir("./templates")).map(x => `./templates/${x}`).filter(x => x.includes("hutao")) : []),
+        ...(settings.runFromFolder === true ? (await readdir("./templates")).map(x => `./templates/${x}`).filter(x => x.includes("ganyu")) : []),
     ]
 
     console.log()
@@ -79,6 +82,9 @@ async function run() {
             }
     }
     await browser.close()
+
+    console.log()
+    console.log(`Total time: ${(Date.now() - start) / 1000} seconds`)
 }
 
 /**
