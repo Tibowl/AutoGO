@@ -15,7 +15,7 @@
         "reactionMode": "hydro_vaporize",
         "conditional": {
           "PolarStar": {
-            "GoldenMajesty": "2"
+            "GoldenMajesty": "3"
           }
         },
         "bonusStats": {
