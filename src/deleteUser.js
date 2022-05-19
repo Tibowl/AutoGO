@@ -1,4 +1,4 @@
-const { readFile, writeFile, readdir, rm, rename } = require("fs/promises")
+const { readFile, writeFile, readdir, rm, rename, mkdir } = require("fs/promises")
 
 async function run() {
     const [_p, _e, user] = process.argv
@@ -19,6 +19,7 @@ async function run() {
         }
     }
 
+    await mkdir("./good-old/", { recursive: true })
     try {
         await rename(`./good/${user}`, `./good-old/${user}`)
     } catch (error) { }
