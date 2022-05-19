@@ -10,9 +10,7 @@ async function run() {
 
     const templates = [
         ...settings.templates,
-        ...(settings.runFromFolder === true ? (await readdir("./templates")).map(x => `./templates/${x}`).filter(x => !x.includes("ganyu") && !x.includes("hutao")) : []),
-        ...(settings.runFromFolder === true ? (await readdir("./templates")).map(x => `./templates/${x}`).filter(x => x.includes("hutao")) : []),
-        ...(settings.runFromFolder === true ? (await readdir("./templates")).map(x => `./templates/${x}`).filter(x => x.includes("ganyu")) : []),
+        ...(settings.runFromFolder === true ? (await readdir("./templates")).map(x => `./templates/${x}`) : []),
     ]
 
     console.log()

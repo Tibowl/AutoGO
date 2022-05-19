@@ -48,7 +48,7 @@
             "basic",
             "eleMas"
           ],
-          "mainStatAssumptionLevel": 20,
+          "mainStatAssumptionLevel": 0,
           "useExcludedArts": false,
           "useEquippedArts": false,
           "builds": [],
