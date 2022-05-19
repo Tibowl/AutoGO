@@ -62,7 +62,7 @@
           "mainStatKeys": {
             "sands": ["atk_"],
             "goblet": ["anemo_dmg_","atk_"],
-            "circlet": ["critRate_","critDMG_"]
+            "circlet": ["critRate_","critDMG_","atk_"]
           },
           "optimizationTarget": [
             "plunging",
