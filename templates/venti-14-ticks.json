@@ -1,6 +1,6 @@
 {
-  "templateName": "raiden-hypercarry-c3-el",
-  "char": "RaidenShogun",
+  "templateName": "venti-14-ticks",
+  "char": "Venti",
   "template": {
     "format": "GOOD",
     "dbVersion": 15,
@@ -8,42 +8,33 @@
     "version": 1,
     "characters": [
       {
-        "key": "RaidenShogun",
+        "key": "Venti",
         "level": 90,
         "ascension": 6,
         "hitMode": "avgHit",
         "reactionMode": "",
         "conditional": {
-          "EngulfingLightning": {
-            "TimelessDream": "on"
+          "Venti": {
+            "burstAbsorption": "cryo"
           },
-          "RaidenShogun": {
-            "skillEye": "skillEye",
-            "burstResolve": "60",
-            "skillEyeTeam": "80",
-            "c4": "c4"
+          "ViridescentVenerer": {
+            "swirlcryo": "cryo"
           }
         },
-        "bonusStats": {
-          "atk_": 40,
-          "atk": 1800,
-          "critDMG_": 60,
-          "electro_dmg_": 40,
-          "electro_enemyRes_": -40
-        },
+        "bonusStats": {},
         "enemyOverride": {},
         "talent": {
-          "auto": 10,
-          "skill": 10,
-          "burst": 10
+          "auto": 9,
+          "skill": 9,
+          "burst": 9
         },
         "infusionAura": "",
-        "constellation": 3,
+        "constellation": 0,
         "buildSettings": {
           "setFilters": [
             {
-              "key": "",
-              "num": 0
+              "key": "ViridescentVenerer",
+              "num": 4
             },
             {
               "key": "",
@@ -57,21 +48,25 @@
           "statFilters": {},
           "mainStatKeys": {
             "sands": [
+              "eleMas",
               "atk_",
               "enerRech_"
             ],
             "goblet": [
-              "electro_dmg_",
+              "anemo_dmg_",
+              "eleMas",
               "atk_"
             ],
             "circlet": [
+              "atk_",
+              "eleMas",
               "critRate_",
               "critDMG_"
             ]
           },
           "optimizationTarget": [
             "burst",
-            "dmg"
+            "full14"
           ],
           "mainStatAssumptionLevel": 0,
           "useExcludedArts": false,
@@ -90,16 +85,16 @@
           ""
         ],
         "compareData": false,
-        "favorite": true
+        "favorite": false
       }
     ],
     "weapons": [
       {
-        "key": "EngulfingLightning",
+        "key": "TheStringless",
         "level": 90,
         "ascension": 6,
-        "refinement": 1,
-        "location": "RaidenShogun",
+        "refinement": 3,
+        "location": "Venti",
         "lock": true
       }
     ]
