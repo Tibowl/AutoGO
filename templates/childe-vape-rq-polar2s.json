@@ -1,0 +1,103 @@
+{
+  "templateName": "childe-vape-rq-polar2s",
+  "char": "Tartaglia",
+  "template": {
+    "format": "GOOD",
+    "dbVersion": 15,
+    "source": "Genshin Optimizer",
+    "version": 1,
+    "characters": [
+      {
+        "key": "Tartaglia",
+        "level": 90,
+        "ascension": 6,
+        "hitMode": "avgHit",
+        "reactionMode": "hydro_vaporize",
+        "conditional": {
+          "PolarStar": {
+            "GoldenMajesty": "3"
+          }
+        },
+        "bonusStats": {
+          "atk": 1000,
+          "atk_": 45,
+          "hydro_enemyRes_": -40
+        },
+        "enemyOverride": {},
+        "talent": {
+          "auto": 10,
+          "skill": 10,
+          "burst": 10
+        },
+        "infusionAura": "",
+        "constellation": 0,
+        "buildSettings": {
+          "setFilters": [
+            {
+              "key": "",
+              "num": 0
+            },
+            {
+              "key": "",
+              "num": 0
+            },
+            {
+              "key": "",
+              "num": 0
+            }
+          ],
+          "statFilters": {},
+          "mainStatKeys": {
+            "sands": [
+              "atk_",
+              "eleMas",
+              "enerRech_"
+            ],
+            "goblet": [
+              "atk_",
+              "eleMas",
+              "hydro_dmg_"
+            ],
+            "circlet": [
+              "eleMas",
+              "critDMG_",
+              "critRate_",
+              "atk_"
+            ]
+          },
+          "optimizationTarget": [
+            "burst",
+            "rangedDmg"
+          ],
+          "mainStatAssumptionLevel": 0,
+          "useExcludedArts": false,
+          "useEquippedArts": false,
+          "builds": [],
+          "buildDate": 0,
+          "maxBuildsToShow": 1,
+          "plotBase": "enerRech_",
+          "compareBuild": true,
+          "levelLow": 0,
+          "levelHigh": 20
+        },
+        "team": [
+          "",
+          "",
+          ""
+        ],
+        "compareData": false,
+        "favorite": false
+      }
+    ],
+    "weapons": [
+      {
+        "key": "PolarStar",
+        "level": 90,
+        "ascension": 6,
+        "refinement": 1,
+        "location": "Tartaglia",
+        "lock": true
+      }
+    ]
+  }
+}
