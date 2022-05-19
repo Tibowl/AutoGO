@@ -25,8 +25,8 @@
         },
         "enemyOverride": {},
         "talent": {
-          "auto": 6,
-          "skill": 9,
+          "auto": 10,
+          "skill": 10,
           "burst": 10
         },
         "infusionAura": "",
@@ -81,9 +81,9 @@
           "levelHigh": 20
         },
         "team": [
-          "Xiangling",
-          "Sucrose",
-          "Bennett"
+          "",
+          "",
+          ""
         ],
         "compareData": false,
         "favorite": false
