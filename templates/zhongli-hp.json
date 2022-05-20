@@ -1,0 +1,84 @@
+{
+  "templateName": "zhongli-hp",
+  "char": "Zhongli",
+  "template": {
+    "format": "GOOD",
+    "dbVersion": 15,
+    "source": "Genshin Optimizer",
+    "version": 1,
+    "characters": [
+      {
+        "key": "Zhongli",
+        "level": 90,
+        "ascension": 6,
+        "hitMode": "avgHit",
+        "reactionMode": "",
+        "conditional": {
+          "Zhongli": {}
+        },
+        "bonusStats": {},
+        "enemyOverride": {},
+        "talent": {
+          "auto": 9,
+          "skill": 9,
+          "burst": 9
+        },
+        "infusionAura": "",
+        "constellation": 0,
+        "buildSettings": {
+          "setFilters": [
+            {
+              "key": "",
+              "num": 0
+            },
+            {
+              "key": "",
+              "num": 0
+            },
+            {
+              "key": "",
+              "num": 0
+            }
+          ],
+          "statFilters": {},
+          "mainStatKeys": {
+            "sands": [],
+            "goblet": [],
+            "circlet": []
+          },
+          "optimizationTarget": [
+            "basic",
+            "hp"
+          ],
+          "mainStatAssumptionLevel": 0,
+          "useExcludedArts": false,
+          "useEquippedArts": false,
+          "builds": [],
+          "buildDate": 0,
+          "maxBuildsToShow": 1,
+          "plotBase": "",
+          "compareBuild": true,
+          "levelLow": 0,
+          "levelHigh": 20
+        },
+        "team": [
+          "",
+          "",
+          ""
+        ],
+        "compareData": false,
+        "favorite": false
+      }
+    ],
+    "weapons": [
+      {
+        "key": "BlackTassel",
+        "level": 90,
+        "ascension": 6,
+        "refinement": 5,
+        "location": "Zhongli",
+        "lock": true
+      }
+    ]
+  }
+}
