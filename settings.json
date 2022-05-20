@@ -1,7 +1,18 @@
 {
     "templates": [
-        "templates/kazuha-er-em.json"
+        "templates/kazuha-er-em.json",
+        "templates/keqing-ca-mistsplitter.json",
+        "templates/xiao-plunge-jadespear.json",
+        "templates/xingqiu-burst-sacsword.json",
+        "templates/venti-14-ticks.json",
+        "templates/raiden-overvape-c0-the-catch.json",
+        "templates/raiden-hypercarry-c3-el.json",
+        "templates/eula-burst-sobp.json",
+        "templates/itto-ca-redhorn.json",
+        "templates/rosaria-burst-melt-wavebreaker.json",
+        "templates/xiangling-pyronado-the-catch-er.json",
+        "templates/childe-vape-rq-polar-3s.json"
     ],
-    "runFromFolder": true,
+    "runFromFolder": false,
     "onlyNew": true
 }
