@@ -1,0 +1,90 @@
+{
+  "templateName": "bennett-4no",
+  "char": "Bennett",
+  "template": {
+    "format": "GOOD",
+    "dbVersion": 15,
+    "source": "Genshin Optimizer",
+    "version": 1,
+    "characters": [
+      {
+        "key": "Bennett",
+        "level": 90,
+        "ascension": 6,
+        "hitMode": "avgHit",
+        "reactionMode": "pyro_vaporize",
+        "conditional": {
+          "NoblesseOblige": {
+            "set4": "on"
+          }
+        },
+        "bonusStats": {
+          "atk_": 25
+        },
+        "enemyOverride": {
+          "pyro_enemyRes_": -5
+        },
+        "talent": {
+          "auto": 9,
+          "skill": 9,
+          "burst": 9
+        },
+        "infusionAura": "",
+        "constellation": 5,
+        "buildSettings": {
+          "setFilters": [
+            {
+              "key": "NoblesseOblige",
+              "num": 4
+            },
+            {
+              "key": "",
+              "num": 0
+            },
+            {
+              "key": "",
+              "num": 0
+            }
+          ],
+          "statFilters": {},
+          "mainStatKeys": {
+            "sands": [],
+            "goblet": [],
+            "circlet": []
+          },
+          "optimizationTarget": [
+            "burst",
+            "dmg"
+          ],
+          "mainStatAssumptionLevel": 0,
+          "useExcludedArts": false,
+          "useEquippedArts": false,
+          "builds": [],
+          "buildDate": 0,
+          "maxBuildsToShow": 1,
+          "plotBase": "enerRech_",
+          "compareBuild": true,
+          "levelLow": 0,
+          "levelHigh": 20
+        },
+        "team": [
+          "",
+          "",
+          ""
+        ],
+        "compareData": false,
+        "favorite": false
+      }
+    ],
+    "weapons": [
+      {
+        "key": "PrototypeRancour",
+        "level": 90,
+        "ascension": 6,
+        "refinement": 1,
+        "location": "Bennett",
+        "lock": true
+      }
+    ]
+  }
+}
