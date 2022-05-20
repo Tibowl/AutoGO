@@ -1,6 +1,10 @@
 {
     "templates": [
         "templates/kazuha-er-em.json",
+        "templates/zhongli-hp.json",
+        "templates/bennett-burst-4no.json",
+        "templates/diona-healing-rainbow.json",
+        "templates/kokomi-na-hyper.json",
         "templates/keqing-ca-mistsplitter.json",
         "templates/xiao-plunge-jadespear.json",
         "templates/xingqiu-burst-sacsword.json",
