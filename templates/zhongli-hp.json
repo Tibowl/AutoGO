@@ -56,7 +56,7 @@
           "builds": [],
           "buildDate": 0,
           "maxBuildsToShow": 1,
-          "plotBase": "",
+          "plotBase": "heal_",
           "compareBuild": true,
           "levelLow": 0,
           "levelHigh": 20
