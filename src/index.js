@@ -145,14 +145,22 @@ async function prepareUser(template, user, templateName) {
 async function clickButton(page, targetText) {
     while (true) {
         const buttons = await page.$$("button")
+        let found = false
         for (const button of buttons) {
             const text = await (await button.getProperty("innerText")).jsonValue()
             if (text == targetText) {
-                await button.click()
-                return
+                found = true
+                try {
+                    await button.click()
+                    return
+                } catch (error) {
+                    console.error(`Was unable to click on ${targetText}, trying again in 100ms`)
+                }
             }
         }
-        console.error(`Could not find button with name ${targetText}, trying again in 100ms`)
+
+        if (!found)
+            console.error(`Could not find button with name ${targetText}, trying again in 100ms`)
         await page.waitForTimeout(100)
     }
 }
