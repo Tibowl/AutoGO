@@ -45,13 +45,11 @@ async function run() {
                 await page.waitForSelector("textarea")
                 await page.evaluate(`document.querySelector("textarea").value = \`${JSON.stringify(good).replace(/[\\`$]/g, "\\$&")}\`;`)
                 await page.type("textarea", " ")
-                await page.waitForTimeout(500)
                 await clickButton(page, "Replace Database")
                 await page.waitForTimeout(500)
 
                 console.log(`Starting build generation for ${templateName}/${user}`)
                 await page.goto(url)
-                await page.waitForTimeout(1000)
                 await clickButton(page, "Generate Builds")
 
                 if (await busyWait(page, user)) {
@@ -145,16 +143,18 @@ async function prepareUser(template, user, templateName) {
  * @returns
  */
 async function clickButton(page, targetText) {
-    const buttons = await page.$$("button")
-
-    for (const button of buttons) {
-        const text = await (await button.getProperty("innerText")).jsonValue()
-        if (text == targetText) {
-            await button.click()
-            return
+    while (true) {
+        const buttons = await page.$$("button")
+        for (const button of buttons) {
+            const text = await (await button.getProperty("innerText")).jsonValue()
+            if (text == targetText) {
+                await button.click()
+                return
+            }
         }
+        console.error(`Could not find button with name ${targetText}, trying again in 100ms`)
+        await page.waitForTimeout(100)
     }
-    console.error(`Could not find button with name ${targetText}`)
 }
 
 
