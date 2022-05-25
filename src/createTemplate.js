@@ -8,7 +8,7 @@ async function run() {
     if (templateName == undefined) {
         console.log(`Usage: node src/createTemplate <char> <templateName> [GOOD filepath OR 'clipboard']`)
         console.log(`Example: node src/createTemplate KaedeharaKazuha kazuha-er-em`)
-        return;
+        return
     }
 
     console.log(`Creating template for ${char}: ${templateName} from ${good}`)

@@ -6,7 +6,7 @@ async function run() {
     if (user == undefined) {
         console.log(`Usage: node src/deleteUser <user>`)
         console.log(`Example: node src/deleteUser good.json`)
-        return;
+        return
     }
 
     console.log(`Clearing calculated data for ${user}`)
