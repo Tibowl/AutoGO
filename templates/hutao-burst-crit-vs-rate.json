@@ -1,0 +1,108 @@
+{
+  "templateName": "hutao-burst-crit-vs-rate",
+  "char": "HuTao",
+  "template": {
+    "format": "GOOD",
+    "dbVersion": 15,
+    "source": "Genshin Optimizer",
+    "version": 1,
+    "characters": [
+      {
+        "key": "HuTao",
+        "level": 90,
+        "ascension": 6,
+        "hitMode": "critHit",
+        "reactionMode": "pyro_vaporize",
+        "conditional": {
+          "HuTao": {
+            "GuideToAfterlifeVoyage": "on",
+            "SanguineRouge": "on"
+          },
+          "ShimenawasReminiscence": {},
+          "CrimsonWitchOfFlames": {
+            "stack": "1"
+          },
+          "StaffOfHoma": {
+            "RecklessCinnabar": "on"
+          }
+        },
+        "bonusStats": {
+          "eleMas": 320,
+          "atk_": 45,
+          "pyro_enemyRes_": -40
+        },
+        "enemyOverride": {},
+        "talent": {
+          "auto": 10,
+          "skill": 10,
+          "burst": 10
+        },
+        "infusionAura": "",
+        "constellation": 6,
+        "buildSettings": {
+          "setFilters": [
+            {
+              "key": "",
+              "num": 0
+            },
+            {
+              "key": "",
+              "num": 0
+            },
+            {
+              "key": "",
+              "num": 0
+            }
+          ],
+          "statFilters": {},
+          "mainStatKeys": {
+            "sands": [
+              "hp_",
+              "eleMas"
+            ],
+            "goblet": [
+              "pyro_dmg_"
+            ],
+            "circlet": [
+              "critDMG_",
+              "critRate_",
+              "hp_",
+              "eleMas"
+            ]
+          },
+          "optimizationTarget": [
+            "burst",
+            "lowHpDmg"
+          ],
+          "mainStatAssumptionLevel": 0,
+          "useExcludedArts": false,
+          "useEquippedArts": false,
+          "builds": [],
+          "buildDate": 0,
+          "maxBuildsToShow": 1,
+          "plotBase": "critRate_",
+          "compareBuild": true,
+          "levelLow": 16,
+          "levelHigh": 20
+        },
+        "team": [
+          "",
+          "",
+          ""
+        ],
+        "compareData": true,
+        "favorite": true
+      }
+    ],
+    "weapons": [
+      {
+        "key": "StaffOfHoma",
+        "level": 90,
+        "ascension": 6,
+        "refinement": 5,
+        "location": "HuTao",
+        "lock": true
+      }
+    ]
+  }
+}

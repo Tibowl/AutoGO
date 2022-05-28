@@ -19,7 +19,9 @@
         "templates/childe-vape-rq-polar-3s.json",
         "templates/ganyu-ice-shard-amos.json",
         "templates/ganyu-bloom-melt-amos.json",
-        "templates/hutao-ca-homa-sronly.json"
+        "templates/hutao-ca-homa-sronly.json",
+        "templates/hutao-burst-crit-vs-rate.json",
+        "templates/crit-dmg-vs-crit-rate.json"
     ],
     "runFromFolder": true,
     "onlyNew": true
