@@ -18,6 +18,7 @@ async function run() {
     console.log("=".repeat(64))
 
     for (const templateFile of templates) {
+        try {
         const { templateName, template, char } = JSON.parse((await readFile(templateFile)).toString())
 
         console.log()
@@ -76,6 +77,10 @@ async function run() {
 
                 await page.close()
             }
+        } catch (error) {
+            console.error(`An error occurred while handling template ${templateFile}`)
+            console.error(error)
+        }
     }
     await browser.close()
 

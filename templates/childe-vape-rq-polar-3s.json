@@ -16,6 +16,9 @@
         "conditional": {
           "PolarStar": {
             "GoldenMajesty": "3"
+          },
+          "Lavawalker": {
+              "state": "on"
           }
         },
         "bonusStats": {
@@ -77,7 +80,7 @@
           "maxBuildsToShow": 1,
           "plotBase": "enerRech_",
           "compareBuild": true,
-          "levelLow": 0,
+          "levelLow": 1,
           "levelHigh": 20
         },
         "team": [
