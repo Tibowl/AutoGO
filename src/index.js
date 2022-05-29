@@ -24,7 +24,7 @@ async function run() {
         console.log()
         console.log(`Starting template ${templateName}`)
 
-        const url = `https://frzyc.github.io/genshin-optimizer/#/character/${char}/optimize`
+        const url = `https://frzyc.github.io/genshin-optimizer/#/characters/${char}/optimize`
         const outputFile = `output/${templateName}.json`
         const output = await loadOutput(outputFile)
 
