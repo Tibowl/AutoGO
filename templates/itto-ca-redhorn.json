@@ -3,7 +3,7 @@
   "char": "AratakiItto",
   "template": {
     "format": "GOOD",
-    "dbVersion": 15,
+    "dbVersion": 17,
     "source": "Genshin Optimizer",
     "version": 1,
     "characters": [
@@ -45,51 +45,6 @@
         },
         "infusionAura": "",
         "constellation": 0,
-        "buildSettings": {
-          "setFilters": [
-            {
-              "key": "",
-              "num": 0
-            },
-            {
-              "key": "",
-              "num": 0
-            },
-            {
-              "key": "",
-              "num": 0
-            }
-          ],
-          "statFilters": {},
-          "mainStatKeys": {
-            "sands": [
-              "def_",
-              "atk_"
-            ],
-            "goblet": [
-              "geo_dmg_"
-            ],
-            "circlet": [
-              "critRate_",
-              "critDMG_",
-              "def_"
-            ]
-          },
-          "optimizationTarget": [
-            "charged",
-            "akSlash"
-          ],
-          "mainStatAssumptionLevel": 0,
-          "useExcludedArts": false,
-          "useEquippedArts": false,
-          "builds": [],
-          "buildDate": 0,
-          "maxBuildsToShow": 1,
-          "plotBase": "enerRech_",
-          "compareBuild": true,
-          "levelLow": 0,
-          "levelHigh": 20
-        },
         "team": [
           "",
           "",
@@ -97,6 +52,41 @@
         ],
         "compareData": false,
         "favorite": true
+      }
+    ],
+    "buildSettings": [
+      {
+        "statFilters": {},
+        "mainStatKeys": {
+          "sands": [
+            "def_",
+            "atk_"
+          ],
+          "goblet": [
+            "geo_dmg_"
+          ],
+          "circlet": [
+            "critRate_",
+            "critDMG_",
+            "def_"
+          ]
+        },
+        "optimizationTarget": [
+          "charged",
+          "akSlash"
+        ],
+        "mainStatAssumptionLevel": 0,
+        "useExcludedArts": false,
+        "useEquippedArts": false,
+        "builds": [],
+        "buildDate": 0,
+        "maxBuildsToShow": 1,
+        "plotBase": "enerRech_",
+        "compareBuild": true,
+        "levelLow": 0,
+        "levelHigh": 20,
+        "artSetExclusion": {},
+        "key": "AratakiItto"
       }
     ],
     "weapons": [

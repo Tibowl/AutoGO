@@ -19,64 +19,64 @@ async function run() {
 
     for (const templateFile of templates) {
         try {
-        const { templateName, template, char } = JSON.parse((await readFile(templateFile)).toString())
+            const { templateName, template, char } = JSON.parse((await readFile(templateFile)).toString())
 
-        console.log()
-        console.log(`Starting template ${templateName}`)
+            console.log()
+            console.log(`Starting template ${templateName}`)
 
-        const url = `https://frzyc.github.io/genshin-optimizer/#/characters/${char}/optimize`
-        const outputFile = `output/${templateName}.json`
-        const output = await loadOutput(outputFile)
+            const url = `https://frzyc.github.io/genshin-optimizer/#/characters/${char}/optimize`
+            const outputFile = `output/${templateName}.json`
+            const output = await loadOutput(outputFile)
 
-        if (output.length > 0)
-            console.log(`Loaded ${output.length} from output`)
-        console.log("=".repeat(64))
+            if (output.length > 0)
+                console.log(`Loaded ${output.length} from output`)
+            console.log("=".repeat(64))
 
-        for (const f of await readdir("./good/", { withFileTypes: true }))
-            if (f.isFile() && f.name.endsWith(".json")) {
-                const { name: user } = f
-                if (settings.onlyNew && output.some(x => x.user == user))
-                    continue
+            for (const f of await readdir("./good/", { withFileTypes: true }))
+                if (f.isFile() && f.name.endsWith(".json")) {
+                    const { name: user } = f
+                    if (settings.onlyNew && output.some(x => x.user == user))
+                        continue
 
-                const good = await prepareUser(template, user, templateName)
+                    const good = await prepareUser(template, user, templateName)
 
-                const page = await browser.newPage()
-                console.log(`Replacing database for ${templateName}/${user}`)
-                await page.goto("https://frzyc.github.io/genshin-optimizer/#/setting")
-                await page.waitForSelector("textarea")
-                await page.evaluate(`document.querySelector("textarea").value = \`${JSON.stringify(good).replace(/[\\`$]/g, "\\$&")}\`;`)
-                await page.type("textarea", " ")
-                await clickButton(page, "Replace Database")
-                await page.waitForTimeout(500)
-
-                console.log(`Starting build generation for ${templateName}/${user}`)
-                await page.goto(url)
-                await clickButton(page, "Generate Builds")
-
-                if (await busyWait(page, user)) {
-                    console.log(`Exporting data of ${templateName}/${user}`)
+                    const page = await browser.newPage()
+                    console.log(`Replacing database for ${templateName}/${user}`)
+                    await page.goto("https://frzyc.github.io/genshin-optimizer/#/setting")
+                    await page.waitForSelector("textarea")
+                    await page.evaluate(`document.querySelector("textarea").value = \`${JSON.stringify(good).replace(/[\\`$]/g, "\\$&")}\`;`)
+                    await page.type("textarea", " ")
+                    await clickButton(page, "Replace Database")
                     await page.waitForTimeout(500)
-                    const area = await page.$("textarea")
-                    const text = await (await area.getProperty("value")).jsonValue()
-                    console.log(text)
 
-                    output.push({
-                        user,
-                        stats: JSON.parse(text)
-                    })
-                } else {
-                    console.log(`No sets could be generated for ${templateName}/${user}`)
+                    console.log(`Starting build generation for ${templateName}/${user}`)
+                    await page.goto(url)
+                    await clickButton(page, "Generate Builds")
 
-                    output.push({
-                        user,
-                        stats: []
-                    })
+                    if (await busyWait(page, user)) {
+                        console.log(`Exporting data of ${templateName}/${user}`)
+                        await page.waitForTimeout(500)
+                        const area = await page.$("textarea")
+                        const text = await (await area.getProperty("value")).jsonValue()
+                        console.log(text)
+
+                        output.push({
+                            user,
+                            stats: JSON.parse(text)
+                        })
+                    } else {
+                        console.log(`No sets could be generated for ${templateName}/${user}`)
+
+                        output.push({
+                            user,
+                            stats: []
+                        })
+                    }
+
+                    await writeFile(outputFile, JSON.stringify(output))
+
+                    await page.close()
                 }
-
-                await writeFile(outputFile, JSON.stringify(output))
-
-                await page.close()
-            }
         } catch (error) {
             console.error(`An error occurred while handling template ${templateFile}`)
             console.error(error)
@@ -138,6 +138,29 @@ async function prepareUser(template, user, templateName) {
         "key": "GlobalSettings"
     }]
 
+    // Map artifact set exclusion overrides (Excluding all sets by default)
+    const artifactSets = [
+        "rainbow",
+        "Adventurer", "ArchaicPetra", "Berserker", "BlizzardStrayer", "BloodstainedChivalry", "BraveHeart",
+        "CrimsonWitchOfFlames", "DefendersWill", "EchoesOfAnOffering", "EmblemOfSeveredFate", "Gambler",
+        "GladiatorsFinale", "HeartOfDepth", "HuskOfOpulentDreams", "Instructor", "Lavawalker", "LuckyDog",
+        "MaidenBeloved", "MartialArtist", "NoblesseOblige", "OceanHuedClam", "PaleFlame", "ResolutionOfSojourner",
+        "RetracingBolide", "Scholar", "ShimenawasReminiscence", "TenacityOfTheMillelith", "TheExile",
+        "ThunderingFury", "Thundersoother", "TinyMiracle", "TravelingDoctor", "VermillionHereafter",
+        "ViridescentVenerer", "WanderersTroupe"
+    ]
+    good.buildSettings = good.buildSettings.map(bs => {
+        if (bs.artSetExclusionOverrides) {
+            bs.artSetExclusion = Object.assign(
+                {},
+                Object.fromEntries(artifactSets.map(x => [x, [2, 4]])),
+                bs.artSetExclusionOverrides
+            )
+            delete bs.artSetExclusionOverrides
+        }
+        return bs
+    })
+
     return good
 }
 
@@ -181,6 +204,7 @@ async function busyWait(page, user) {
     while (true) {
         await page.waitForTimeout(1000)
         const message = await page.$(".MuiAlert-message")
+        if (message == null) continue
         const text = await (await message.getProperty("innerText")).jsonValue()
         console.log(`${user}: ${text.replace(/\n+/g, " / ")}`)
 

@@ -3,7 +3,7 @@
   "char": "Xiangling",
   "template": {
     "format": "GOOD",
-    "dbVersion": 15,
+    "dbVersion": 17,
     "source": "Genshin Optimizer",
     "version": 1,
     "characters": [
@@ -35,53 +35,6 @@
         },
         "infusionAura": "",
         "constellation": 6,
-        "buildSettings": {
-          "setFilters": [
-            {
-              "key": "",
-              "num": 0
-            },
-            {
-              "key": "",
-              "num": 0
-            },
-            {
-              "key": "",
-              "num": 0
-            }
-          ],
-          "statFilters": {},
-          "mainStatKeys": {
-            "sands": [
-              "enerRech_",
-              "atk_",
-              "eleMas"
-            ],
-            "goblet": [
-              "atk_",
-              "pyro_dmg_"
-            ],
-            "circlet": [
-              "critRate_",
-              "critDMG_",
-              "atk_"
-            ]
-          },
-          "optimizationTarget": [
-            "burst",
-            "dmgNado"
-          ],
-          "mainStatAssumptionLevel": 0,
-          "useExcludedArts": false,
-          "useEquippedArts": false,
-          "builds": [],
-          "buildDate": 0,
-          "maxBuildsToShow": 1,
-          "plotBase": "enerRech_",
-          "compareBuild": true,
-          "levelLow": 0,
-          "levelHigh": 20
-        },
         "team": [
           "",
           "",
@@ -89,6 +42,43 @@
         ],
         "compareData": false,
         "favorite": false
+      }
+    ],
+    "buildSettings": [
+      {
+        "statFilters": {},
+        "mainStatKeys": {
+          "sands": [
+            "enerRech_",
+            "atk_",
+            "eleMas"
+          ],
+          "goblet": [
+            "atk_",
+            "pyro_dmg_"
+          ],
+          "circlet": [
+            "critRate_",
+            "critDMG_",
+            "atk_"
+          ]
+        },
+        "optimizationTarget": [
+          "burst",
+          "dmgNado"
+        ],
+        "mainStatAssumptionLevel": 0,
+        "useExcludedArts": false,
+        "useEquippedArts": false,
+        "builds": [],
+        "buildDate": 0,
+        "maxBuildsToShow": 1,
+        "plotBase": "enerRech_",
+        "compareBuild": true,
+        "levelLow": 0,
+        "levelHigh": 20,
+        "artSetExclusion": {},
+        "key": "Xiangling"
       }
     ],
     "weapons": [

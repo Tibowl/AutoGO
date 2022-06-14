@@ -3,17 +3,24 @@ const { read } = require("clipboardy")
 
 
 async function run() {
-    const [_p, _e, char, templateName, good = "clipboard"] = process.argv
+    let [_p, _e, char, templateName, good = "clipboard"] = process.argv
+
+    if (templateName == undefined)
+        [char, templateName] = [templateName, char]
 
     if (templateName == undefined) {
-        console.log(`Usage: node src/createTemplate <char> <templateName> [GOOD filepath OR 'clipboard']`)
+        console.log(`Usage: node src/createTemplate [char] <templateName> [GOOD filepath OR 'clipboard']`)
         console.log(`Example: node src/createTemplate KaedeharaKazuha kazuha-er-em`)
+        console.log(`Char is required if more than one character exists in template`)
         return
     }
+    
+    const template = await readGood(good)
+    const chars = template.characters.map(x => x.key)
+    if (char == undefined && chars.length == 1)
+        char = chars[0]
 
     console.log(`Creating template for ${char}: ${templateName} from ${good}`)
-
-    const template = await readGood(good)
 
     // Delete artifacts and settings from template
     delete template.artifacts
@@ -21,10 +28,11 @@ async function run() {
 
     // Filter out other characters
     if (!template.characters.find(x => x.key == char)) {
-        console.error(`Could not find char ${char}; chars in GOOD: ${template.characters.map(x => x.key).join(", ")}`)
+        console.error(`Could not find char ${char}; chars in GOOD: ${chars.join(", ")}`)
         return
     }
     template.characters = template.characters.filter(x => x.key == char)
+    template.buildSettings = template.buildSettings.filter(x => x.key == char)
 
     // Filter out other weapons
     const weapons = template.weapons.map(x => x.key)
@@ -40,17 +48,23 @@ async function run() {
     template.characters.forEach(x => {
         // Cleanup conditional settings
         x.conditional = Object.fromEntries(Object.entries(x.conditional).filter(x => x[0] == weapon || !weapons.includes(x[0])))
-
-        // Force certain settings
-        x.buildSettings.useExcludedArts = false
-        x.buildSettings.useEquippedArts = false
-        x.buildSettings.builds = []
-        x.buildSettings.buildDate = 0
-        x.buildSettings.maxBuildsToShow = 1
     })
-    template.weapons.forEach(x => {
+    template.buildSettings.forEach(x => {
+        // Force certain settings
+        x.useExcludedArts = false
+        x.useEquippedArts = false
+        x.builds = []
+        x.buildDate = 0
+        x.maxBuildsToShow = 1
+    })
+    const templateWeapons = template.weapons
+    templateWeapons.forEach(x => {
+        // Lock weapons
         x.lock = true
     })
+    // Sort object a bit (put weapons at bottom)
+    delete template.weapons 
+    template.weapons = templateWeapons
 
 
     await mkdir("templates", { recursive: true })

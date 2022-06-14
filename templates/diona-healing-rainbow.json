@@ -1,9 +1,9 @@
 {
-  "templateName": "diona-healing",
+  "templateName": "diona-healing-rainbow",
   "char": "Diona",
   "template": {
     "format": "GOOD",
-    "dbVersion": 15,
+    "dbVersion": 17,
     "source": "Genshin Optimizer",
     "version": 1,
     "characters": [
@@ -27,42 +27,6 @@
         },
         "infusionAura": "",
         "constellation": 6,
-        "buildSettings": {
-          "setFilters": [
-            {
-              "key": "",
-              "num": 0
-            },
-            {
-              "key": "",
-              "num": 0
-            },
-            {
-              "key": "",
-              "num": 0
-            }
-          ],
-          "statFilters": {},
-          "mainStatKeys": {
-            "sands": [],
-            "goblet": [],
-            "circlet": []
-          },
-          "optimizationTarget": [
-            "burst",
-            "healDot"
-          ],
-          "mainStatAssumptionLevel": 0,
-          "useExcludedArts": false,
-          "useEquippedArts": false,
-          "builds": [],
-          "buildDate": 0,
-          "maxBuildsToShow": 1,
-          "plotBase": "enerRech_",
-          "compareBuild": true,
-          "levelLow": 1,
-          "levelHigh": 20
-        },
         "team": [
           "",
           "",
@@ -70,6 +34,32 @@
         ],
         "compareData": false,
         "favorite": false
+      }
+    ],
+    "buildSettings": [
+      {
+        "statFilters": {},
+        "mainStatKeys": {
+          "sands": [],
+          "goblet": [],
+          "circlet": []
+        },
+        "optimizationTarget": [
+          "burst",
+          "healDot"
+        ],
+        "mainStatAssumptionLevel": 0,
+        "useExcludedArts": false,
+        "useEquippedArts": false,
+        "builds": [],
+        "buildDate": 0,
+        "maxBuildsToShow": 1,
+        "plotBase": "enerRech_",
+        "compareBuild": true,
+        "levelLow": 1,
+        "levelHigh": 20,
+        "artSetExclusion": {},
+        "key": "Diona"
       }
     ],
     "weapons": [

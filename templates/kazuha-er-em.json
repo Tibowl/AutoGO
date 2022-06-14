@@ -3,7 +3,7 @@
   "char": "KaedeharaKazuha",
   "template": {
     "format": "GOOD",
-    "dbVersion": 15,
+    "dbVersion": 17,
     "source": "Genshin Optimizer",
     "version": 1,
     "characters": [
@@ -23,42 +23,6 @@
         },
         "infusionAura": "",
         "constellation": 0,
-        "buildSettings": {
-          "setFilters": [
-            {
-              "key": "ViridescentVenerer",
-              "num": 4
-            },
-            {
-              "key": "",
-              "num": 0
-            },
-            {
-              "key": "",
-              "num": 0
-            }
-          ],
-          "statFilters": {},
-          "mainStatKeys": {
-            "sands": [],
-            "goblet": [],
-            "circlet": []
-          },
-          "optimizationTarget": [
-            "basic",
-            "eleMas"
-          ],
-          "mainStatAssumptionLevel": 0,
-          "useExcludedArts": false,
-          "useEquippedArts": false,
-          "builds": [],
-          "buildDate": 0,
-          "maxBuildsToShow": 1,
-          "plotBase": "enerRech_",
-          "compareBuild": true,
-          "levelLow": 0,
-          "levelHigh": 20
-        },
         "team": [
           "",
           "",
@@ -66,6 +30,37 @@
         ],
         "compareData": false,
         "favorite": false
+      }
+    ],
+    "buildSettings": [
+      {
+        "artSetExclusionOverrides": {
+          "ViridescentVenerer": [
+            2
+          ]
+        },
+        "statFilters": {},
+        "mainStatKeys": {
+          "sands": [],
+          "goblet": [],
+          "circlet": []
+        },
+        "optimizationTarget": [
+          "basic",
+          "eleMas"
+        ],
+        "mainStatAssumptionLevel": 0,
+        "useExcludedArts": false,
+        "useEquippedArts": false,
+        "builds": [],
+        "buildDate": 0,
+        "maxBuildsToShow": 1,
+        "plotBase": "enerRech_",
+        "compareBuild": true,
+        "levelLow": 0,
+        "levelHigh": 20,
+        "artSetExclusion": {},
+        "key": "KaedeharaKazuha"
       }
     ],
     "weapons": [

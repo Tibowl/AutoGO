@@ -23,7 +23,9 @@ First prepare the calculation you want to do in your own GO profile. Make sure t
 
 Afterwards, export your GO database by going to `Settings` and under `Database Download` click on `Copy to Clipboard`. (You can also export to file and use that, but clipboard might be easier).  
 
-To create a template from your GOOD dump, run `node src/createTemplate.js <char> <templateName> [optionally, file if not from clipboard]`. `char` needs to be the character name used in GO (see URL when editing character build; for example `HuTao` and `KaedeharaKazuha`). `templateName` will be used in the filename of the template file and output file (do not include `.json` in your name).
+To create a template from your GOOD dump, run `node src/createTemplate.js [char, optional only if 1 char in DB] <templateName> [optionally, file if not from clipboard]`. `char` needs to be the character name used in GO (see URL when editing character build; for example `HuTao` and `KaedeharaKazuha`). `templateName` will be used in the filename of the template file and output file (do not include `.json` in your name).
+
+If the template needs to filter out all artifact sets except a certain one, use `artSetExclusionOverrides`. If provided, AutoGO will automatically fill in the other artifact sets with exclusions.
 
 Finally, put the path to your template file in `settings.json` and run AutoGO using `npm run start` to calculate the values for all GOOD dumps in your `good` folder.
 

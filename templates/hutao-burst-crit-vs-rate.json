@@ -3,7 +3,7 @@
   "char": "HuTao",
   "template": {
     "format": "GOOD",
-    "dbVersion": 15,
+    "dbVersion": 17,
     "source": "Genshin Optimizer",
     "version": 1,
     "characters": [
@@ -39,52 +39,6 @@
         },
         "infusionAura": "",
         "constellation": 6,
-        "buildSettings": {
-          "setFilters": [
-            {
-              "key": "",
-              "num": 0
-            },
-            {
-              "key": "",
-              "num": 0
-            },
-            {
-              "key": "",
-              "num": 0
-            }
-          ],
-          "statFilters": {},
-          "mainStatKeys": {
-            "sands": [
-              "hp_",
-              "eleMas"
-            ],
-            "goblet": [
-              "pyro_dmg_"
-            ],
-            "circlet": [
-              "critDMG_",
-              "critRate_",
-              "hp_",
-              "eleMas"
-            ]
-          },
-          "optimizationTarget": [
-            "burst",
-            "lowHpDmg"
-          ],
-          "mainStatAssumptionLevel": 0,
-          "useExcludedArts": false,
-          "useEquippedArts": false,
-          "builds": [],
-          "buildDate": 0,
-          "maxBuildsToShow": 1,
-          "plotBase": "critRate_",
-          "compareBuild": true,
-          "levelLow": 16,
-          "levelHigh": 20
-        },
         "team": [
           "",
           "",
@@ -92,6 +46,42 @@
         ],
         "compareData": true,
         "favorite": true
+      }
+    ],
+    "buildSettings": [
+      {
+        "statFilters": {},
+        "mainStatKeys": {
+          "sands": [
+            "hp_",
+            "eleMas"
+          ],
+          "goblet": [
+            "pyro_dmg_"
+          ],
+          "circlet": [
+            "critDMG_",
+            "critRate_",
+            "hp_",
+            "eleMas"
+          ]
+        },
+        "optimizationTarget": [
+          "burst",
+          "lowHpDmg"
+        ],
+        "mainStatAssumptionLevel": 0,
+        "useExcludedArts": false,
+        "useEquippedArts": false,
+        "builds": [],
+        "buildDate": 0,
+        "maxBuildsToShow": 1,
+        "plotBase": "critRate_",
+        "compareBuild": true,
+        "levelLow": 16,
+        "levelHigh": 20,
+        "artSetExclusion": {},
+        "key": "HuTao"
       }
     ],
     "weapons": [
