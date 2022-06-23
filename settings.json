@@ -2,6 +2,6 @@
     "templates": [
         "templates/bennett-burst-4no.json"
     ],
-    "runFromFolder": false,
-    "onlyNew": false
+    "runFromFolder": true,
+    "onlyNew": true
 }

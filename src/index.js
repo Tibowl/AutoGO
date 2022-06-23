@@ -3,6 +3,8 @@ const { readFile, readdir, writeFile, mkdir } = require("fs/promises")
 const { join } = require("path")
 const settings = require("../settings.json")
 
+// const baseURL = `http://localhost:3000/genshin-optimizer`
+const baseURL = `https://frzyc.github.io/genshin-optimizer/`
 async function run() {
     const start = Date.now()
     const browser = await puppeteer.launch({ headless: false })
@@ -24,7 +26,7 @@ async function run() {
             console.log()
             console.log(`Starting template ${templateName}`)
 
-            const url = `https://frzyc.github.io/genshin-optimizer/#/characters/${char}/optimize`
+            const url = `${baseURL}#/characters/${char}/optimize`
             const outputFile = `output/${templateName}.json`
             const output = await loadOutput(outputFile)
 
@@ -42,7 +44,7 @@ async function run() {
 
                     const page = await browser.newPage()
                     console.log(`Replacing database for ${templateName}/${user}`)
-                    await page.goto("https://frzyc.github.io/genshin-optimizer/#/setting")
+                    await page.goto(`${baseURL}#/setting`)
                     await page.waitForSelector("textarea")
                     await page.evaluate(`document.querySelector("textarea").value = \`${JSON.stringify(good).replace(/[\\`$]/g, "\\$&")}\`;`)
                     await page.type("textarea", " ")
@@ -201,10 +203,16 @@ async function clickButton(page, targetText) {
  * @returns {Promise<boolean>} true when build generation is successful, false if not
  */
 async function busyWait(page, user) {
+    let count = 0
     while (true) {
         await page.waitForTimeout(1000)
         const message = await page.$(".MuiAlert-message")
-        if (message == null) continue
+        if (message == null) {
+            console.log(`Attempt #${count} waiting for search text...`)
+            if (count++ < 10) continue
+            if (await page.$("textarea") != null)
+                return true
+        } 
         const text = await (await message.getProperty("innerText")).jsonValue()
         console.log(`${user}: ${text.replace(/\n+/g, " / ")}`)
 
