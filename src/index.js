@@ -2,12 +2,12 @@ const puppeteer = require("puppeteer")
 const { readFile, readdir, writeFile, mkdir } = require("fs/promises")
 const { join } = require("path")
 const settings = require("../settings.json")
+const { AutoGO } = require("./autogo")
 
-// const baseURL = `http://localhost:3000/genshin-optimizer`
-const baseURL = `https://frzyc.github.io/genshin-optimizer/`
 async function run() {
+    const autoGO = new AutoGO()
     const start = Date.now()
-    const browser = await puppeteer.launch({ headless: false })
+    await autoGO.start()
     await mkdir("output", { recursive: true })
 
     const templates = [
@@ -26,7 +26,6 @@ async function run() {
             console.log()
             console.log(`Starting template ${templateName}`)
 
-            const url = `${baseURL}#/characters/${char}/optimize`
             const outputFile = `output/${templateName}.json`
             const output = await loadOutput(outputFile)
 
@@ -42,49 +41,19 @@ async function run() {
 
                     const good = await prepareUser(template, user, templateName)
 
-                    const page = await browser.newPage()
-                    console.log(`Replacing database for ${templateName}/${user}`)
-                    await page.goto(`${baseURL}#/setting`)
-                    await page.waitForSelector("textarea")
-                    await page.evaluate(`document.querySelector("textarea").value = \`${JSON.stringify(good).replace(/[\\`$]/g, "\\$&")}\`;`)
-                    await page.type("textarea", " ")
-                    await clickButton(page, "Replace Database")
-                    await page.waitForTimeout(500)
-
-                    console.log(`Starting build generation for ${templateName}/${user}`)
-                    await page.goto(url)
-                    await clickButton(page, "Generate Builds")
-
-                    if (await busyWait(page, user)) {
-                        console.log(`Exporting data of ${templateName}/${user}`)
-                        await page.waitForTimeout(500)
-                        const area = await page.$("textarea")
-                        const text = await (await area.getProperty("value")).jsonValue()
-                        console.log(text)
-
-                        output.push({
-                            user,
-                            stats: JSON.parse(text)
-                        })
-                    } else {
-                        console.log(`No sets could be generated for ${templateName}/${user}`)
-
-                        output.push({
-                            user,
-                            stats: []
-                        })
-                    }
+                    const stats = await autoGO.test(good, char, `${templateName}/${user}`)
+                    output.push({
+                        user, stats
+                    })
 
                     await writeFile(outputFile, JSON.stringify(output))
-
-                    await page.close()
                 }
         } catch (error) {
             console.error(`An error occurred while handling template ${templateFile}`)
             console.error(error)
         }
     }
-    await browser.close()
+    await autoGO.close()
 
     console.log()
     console.log(`Total time: ${(Date.now() - start) / 1000} seconds`)
@@ -164,62 +133,6 @@ async function prepareUser(template, user, templateName) {
     })
 
     return good
-}
-
-/**
- * Click a button element with a certain text
- * @param {puppeteer.Page} page The current tab
- * @param {string} targetText Text of the button to press
- * @returns
- */
-async function clickButton(page, targetText) {
-    while (true) {
-        const buttons = await page.$$("button")
-        let found = false
-        for (const button of buttons) {
-            const text = await (await button.getProperty("innerText")).jsonValue()
-            if (text == targetText) {
-                found = true
-                try {
-                    await button.click()
-                    return
-                } catch (error) {
-                    console.error(`Was unable to click on ${targetText}, trying again in 100ms`)
-                }
-            }
-        }
-
-        if (!found)
-            console.error(`Could not find button with name ${targetText}, trying again in 100ms`)
-        await page.waitForTimeout(100)
-    }
-}
-
-
-/**
- * Busily wait for build generation to finish, prints progress ever ~3 seconds
- * @param {puppeteer.Page} page The current tab
- * @param {string} user Name of the current user
- * @returns {Promise<boolean>} true when build generation is successful, false if not
- */
-async function busyWait(page, user) {
-    let count = 0
-    while (true) {
-        await page.waitForTimeout(1000)
-        const message = await page.$(".MuiAlert-message")
-        if (message == null) {
-            console.log(`Attempt #${count} waiting for search text...`)
-            if (count++ < 10) continue
-            if (await page.$("textarea") != null)
-                return true
-        } 
-        const text = await (await message.getProperty("innerText")).jsonValue()
-        console.log(`${user}: ${text.replace(/\n+/g, " / ")}`)
-
-        if (text.startsWith("Generated")) return true
-        if (text.includes("It looks like you haven't added any artifacts to GO yet!")) return false
-        if (text.startsWith("Current configuration will not generate any builds for")) return false
-    }
 }
 
 run()
