@@ -42,7 +42,7 @@ async function main() {
 
             if (nextGood.error) {
                 console.error(nextGood.error)
-                await sleep(60 * 1000)
+                await sleep(30 * 1000)
                 continue
             }
 
@@ -65,11 +65,12 @@ async function main() {
                     console.log(submission.status)
                 else if (submission.error) {
                     log(submission.error)
-                    await sleep(10 * 1000)
+                    await sleep(30 * 1000)
                 }
             } else {
-                log("No data, sleeping for 5 minutes")
-                await sleep(5 * 60 * 1000)
+                const time = 1 + Math.random() * 4
+                log(`No data, sleeping for ${time.toFixed(1)} minutes`)
+                await sleep(time * 60 * 1000)
             }
         } catch (error) {
             console.error(error)
