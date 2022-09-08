@@ -16,17 +16,25 @@ class AutoGO {
         const url = `${baseURL}#/characters/${char}/optimize`
 
         let stats = []
-        const page = await this.browser.newPage()
+        const tpage = await this.browser.newPage()
         this.logger(`Replacing database for ${name}`)
-        await page.goto(`${baseURL}#/setting`)
-        await this.clickButton(page, "Upload")
-        await page.waitForSelector("textarea")
-        await page.evaluate(`document.querySelector("textarea").value = \`${JSON.stringify(good).replace(/[\\`$]/g, "\\$&")}\`;`)
-        await page.type("textarea", " ")
-        await this.clickButton(page, "Replace Database")
-        await page.waitForTimeout(500)
+        // Go to the base page, and set the localstorage state.
+        await tpage.goto(`${baseURL}`)
+        await tpage.evaluate(good => {
+            localStorage.clear()
+            localStorage.setItem("i18nextLng", "en-US")
+            localStorage.setItem("db_ver", good.dbVersion)
+            localStorage.setItem("state_GlobalSettings", JSON.stringify({ "tcMode": true }))
+            good.characters.forEach(c => localStorage.setItem(`char_${c.key}`, JSON.stringify(c)))
+            good.weapons.forEach(w => localStorage.setItem(`weapon_${w.key}`, JSON.stringify(w)))
+            good.artifacts.forEach((a, i) => localStorage.setItem(`artifact_${i}`, JSON.stringify({ ...a, location: "" })))
+            good.buildSettings.forEach(b => localStorage.setItem(`buildSetting_${b.key}`, JSON.stringify(b)))
+        }, good)
+        await tpage.close();
 
         this.logger(`Starting build generation for ${name}`)
+        // Need to re-open the page so the database will load the new localstorage.
+        const page = await this.browser.newPage()
         await page.goto(url)
         await this.clickButton(page, "Generate Builds")
 
