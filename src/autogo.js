@@ -27,7 +27,7 @@ class AutoGO {
             localStorage.setItem("state_GlobalSettings", JSON.stringify({ "tcMode": true }))
             good.characters.forEach(c => localStorage.setItem(`char_${c.key}`, JSON.stringify(c)))
             good.weapons.forEach(w => localStorage.setItem(`weapon_${w.key}`, JSON.stringify(w)))
-            good.artifacts.forEach((a, i) => localStorage.setItem(`artifact_${i}`, JSON.stringify({ ...a, location: "" })))
+            good.artifacts.forEach((a, i) => localStorage.setItem(`artifact_${i}`, JSON.stringify(a)))
             good.buildSettings.forEach(b => localStorage.setItem(`buildSetting_${b.key}`, JSON.stringify(b)))
         }, good)
         await tpage.close();
